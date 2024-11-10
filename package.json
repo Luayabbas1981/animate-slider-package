@@ -28,8 +28,5 @@
     "webpack-cli": "^5.x.x",
     "css-loader": "^6.x.x",
     "style-loader": "^3.x.x"
-  },
-  "engines": {
-    "node": ">=14.0.0"
   }
 }
