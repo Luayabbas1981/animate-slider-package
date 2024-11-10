@@ -27,7 +27,7 @@ import { initializeSlider } from 'animate-slider';
 import 'animate-slider/src/slider.css';
 
 initializeSlider({
-  sliderContainerClass: 'my-slider-container',
+  sliderContainerClass: 'your-slider-container-class',
   animation: 'rotate', // Options: 'rotate', 'scale', 'fade', 'mirror', 'pop-up'
   duration: 1, // Duration in seconds
   timingFunction: 'ease-in-out', // Options:  'linear','ease', 'ease-in', 'ease-out', 'ease-in-out'
@@ -41,7 +41,7 @@ initializeSlider({
 - **sliderContainerClass**: The CSS class of the container element.
 - **animation**: The animation type (`rotate`, `scale`, `fade`, `mirror`, `pop-up`).
 - **duration**: Duration of the animation in seconds.
-- **timingFunction**: Timing function for animation (`ease`, `ease-in`, `ease-out`, `ease-in-out`).
+- **timingFunction**: Timing function for animation (`linear`,`ease`, `ease-in`, `ease-out`, `ease-in-out`).
 - **dots**: Show navigation dots (`true` or `false`).
 - **dotColor**: Color of the navigation dots "HEX Color".
 
