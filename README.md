@@ -29,10 +29,10 @@ import 'animate-slider/src/slider.css';
 initializeSlider({
   sliderContainerClass: 'my-slider-container',
   animation: 'rotate', // Options: 'rotate', 'scale', 'fade', 'mirror', 'pop-up'
-  duration: 2, // Duration in seconds
-  timingFunction: 'ease-in-out', // Options: 'ease', 'ease-in', 'ease-out', 'ease-in-out'
+  duration: 1, // Duration in seconds
+  timingFunction: 'ease-in-out', // Options:  'linear','ease', 'ease-in', 'ease-out', 'ease-in-out'
   dots: true,
-  dotColor: '#ff0000' // Customize dot color
+  dotColor: '#ff0000' // Customize dot color HEX color
 });
 ```
 
