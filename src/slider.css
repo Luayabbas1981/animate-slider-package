@@ -1,0 +1,128 @@
+.slider-container {
+  height: 50vh;
+  margin: auto;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 1%;
+  overflow: hidden;
+  perspective: 2000px;
+}
+.slider-container > div:not(.dots-container) {
+  width: calc(100% / var(--slides));
+  height: 85%;
+  margin: 0;
+  align-self: self-start;
+}
+
+.slider-container .prev-btn,
+.slider-container .next-btn {
+  aspect-ratio: 1;
+  background-color: transparent;
+  border: none;
+}
+
+.slider-container .prev-btn {
+  background: url(./images/prev-btn.png) no-repeat center;
+  background-size: 100%;
+  cursor: pointer;
+}
+
+.slider-container .next-btn {
+  background: url(./images/next-btn.png) no-repeat center;
+  background-size: 100%;
+  cursor: pointer;
+}
+
+.dots-container {
+  width: 50%;
+  height: 10%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  column-gap: calc(var(--slides) * 2%);
+}
+.dot {
+  width: calc(10% / var(--slides));
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--dot-color);
+}
+.active-dot {
+  background-color: var(--active);
+}
+/* Animation & Keyframes */
+/* Scale animation */
+
+.scale-out-animate {
+  animation: scale-out-animate var(--duration) var(--timing-function) forwards;
+}
+
+@keyframes scale-out-animate {
+  from {
+    scale: 0 1;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+/* Fade animation */
+
+.fade-out-animate {
+  animation: fade-out-animate var(--duration) var(--timing-function) forwards;
+}
+
+@keyframes fade-out-animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Rotate animation */
+.rotate-out-animate {
+  animation: rotate-out-animate var(--duration) var(--timing-function) forwards;
+}
+
+@keyframes rotate-out-animate {
+  from {
+    transform: rotateX(-250deg) scale(0.5);
+  }
+  to {
+    transform: rotateX(0deg) scale(1);
+  }
+}
+/* Mirror animation */
+.mirror-out-animate {
+  animation: mirror-out-animate var(--duration) var(--timing-function) forwards;
+}
+
+@keyframes mirror-out-animate {
+  from {
+    transform: rotateY(-180deg) scale(0.5);
+  }
+  to {
+    transform: rotateY(0deg) scale(1);
+  }
+}
+/* Pop-up animation */
+.pop-up-out-animate {
+  animation: pop-up-out-animate var(--duration) var(--timing-function) forwards;
+}
+
+@keyframes pop-up-out-animate {
+  from {
+    scale: 0;
+  }
+  to {
+    scale: 1;
+  }
+}

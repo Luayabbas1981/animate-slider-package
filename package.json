@@ -1,0 +1,35 @@
+{
+  "name": "animate-slider",
+  "version": "1.1.1",
+  "description": "A customizable animation slider component",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "clean": "rm -rf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "slider",
+    "animation",
+    "carousel",
+    "JavaScript"
+  ],
+  "author": "luay_abbas",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "devDependencies": {
+    "webpack": "^5.x.x",
+    "webpack-cli": "^5.x.x",
+    "css-loader": "^6.x.x",
+    "style-loader": "^3.x.x"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
