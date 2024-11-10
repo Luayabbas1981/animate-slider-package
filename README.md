@@ -57,33 +57,3 @@ initializeSlider({
 </body>
 ```
 
-## Webpack Configuration
-Add a webpack.config.js file in the root of your project if it doesn’t exist yet. The following configuration will bundle animate-slider correctly, allowing you to import it along with its CSS and image assets:
-
-```bash
-const path = require('path');
-
-module.exports = {
-  entry: './src/index.js', // Update with your main JS file path
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-      },
-    ],
-  },
-  resolve: {
-    extensions: ['.js', '.json'],
-  },
-};
-```
-
