@@ -18,7 +18,9 @@ Install via npm:
 
 ```bash
 npm install animate-slider
+```
 
+```bash
 import { initializeSlider } from 'animate-slider';
 import 'animate-slider/src/slider.css';
 

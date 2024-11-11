@@ -57,8 +57,8 @@
   background-color: var(--active);
 }
 /* Animation & Keyframes */
-/* Scale animation */
 
+/* Scale animation */
 .scale-out-animate {
   animation: scale-out-animate var(--duration) var(--timing-function) forwards;
 }
