@@ -1,10 +1,16 @@
-import "./slider.css";
-import nextBtnImg from "./images/next-btn.png";
-import prevBtnImg from "./images/prev-btn.png";
+import "./animate-slider.css";
+import nextBtnImg from "./images/slider-next-btn.png";
+import prevBtnImg from "./images/slider-prev-btn.png";
 
 // Variables and initial states
 const animationArray = ["scale", "fade", "rotate", "mirror", "pop-up"];
-const timingFunctionArray = ["ease", "ease-in", "ease-out", "ease-in-out"];
+const timingFunctionArray = [
+  "linear",
+  "ease",
+  "ease-in",
+  "ease-out",
+  "ease-in-out",
+];
 
 let isXLargeScreen = null;
 let isLargeScreen = null;
@@ -13,7 +19,7 @@ let isSmallScreen = null;
 let isXSmallScreen = null;
 let visibleSlides = null;
 let slidesToShow = null;
-let animationMode = "rotate";
+let animationMode = "fade";
 let timingFunctionMode = "ease-in-out";
 let dotsMode = true;
 let dotsArray = [];
@@ -25,24 +31,24 @@ let startX = 0;
 let endX = 0;
 let isTouching = false;
 
-const prevButton = document.createElement("button");
-prevButton.className = "prev-btn";
-prevButton.style.backgroundImage = `url(${prevBtnImg})`;
+const sliderPrevBtn = document.createElement("button");
+sliderPrevBtn.className = "slider-prev-btn";
+sliderPrevBtn.style.backgroundImage = `url(${prevBtnImg})`;
 
-const nextButton = document.createElement("button");
-nextButton.className = "next-btn";
-nextButton.style.backgroundImage = `url(${nextBtnImg})`;
+const sliderNextBtn = document.createElement("button");
+sliderNextBtn.className = "slider-next-btn";
+sliderNextBtn.style.backgroundImage = `url(${nextBtnImg})`;
 
 const dotsContainer = document.createElement("div");
 dotsContainer.classList.add("dots-container");
 
 function initializeSlider({
   sliderContainerClass,
-  animation = "rotate",
-  duration = 1,
-  timingFunction = "ease-in-out",
-  dots = true,
-  dotColor = "#03a9f4",
+  animation,
+  duration,
+  timingFunction,
+  dots,
+  dotColor,
 } = {}) {
   const sliderContainer = document.querySelector(`.${sliderContainerClass}`);
   if (!sliderContainer) {
@@ -51,7 +57,7 @@ function initializeSlider({
     );
     return;
   }
-  sliderContainer.classList.add("slider-container");
+  sliderContainer.classList.add("animate-slider-container");
   const slidesArray = Array.from(sliderContainer.children).filter(
     (child) => child.tagName === "DIV"
   );
@@ -80,9 +86,6 @@ function initializeSlider({
   sliderContainer.style.setProperty("--timing-function", timingFunction);
   sliderContainer.style.setProperty("--dot-color", `${dotColor}5e`);
   sliderContainer.style.setProperty("--active", dotColor);
-
-  animationMode = animation;
-  dotsColor = dotColor;
 
   function setCardsNumber() {
     if (isXLargeScreen && slidesArray.length >= 4) {
@@ -126,13 +129,13 @@ function initializeSlider({
 
   function setVisibleCards(startIndex, lastIndex) {
     sliderContainer.innerHTML = "";
-    sliderContainer.appendChild(prevButton);
+    sliderContainer.appendChild(sliderPrevBtn);
     visibleSlides = slidesArray.slice(startIndex, lastIndex);
     visibleSlides.forEach((slide) => {
       sliderContainer.appendChild(slide);
-      slide.classList.add(`${animationMode}-out-animate`);
+      slide.classList.add(`${animation}-out-animate`);
     });
-    sliderContainer.appendChild(nextButton);
+    sliderContainer.appendChild(sliderNextBtn);
     setDots();
   }
 
@@ -143,15 +146,19 @@ function initializeSlider({
     isSmallScreen = window.innerWidth >= 700 && window.innerWidth < 1100;
     isXSmallScreen = window.innerWidth < 700;
     setCardsNumber();
-    prevButton.style.width = `${(window.innerWidth * 0.15) / slidesToShow}px`;
-    nextButton.style.width = `${(window.innerWidth * 0.15) / slidesToShow}px`;
+    sliderPrevBtn.style.width = `${
+      (window.innerWidth * 0.15) / slidesToShow
+    }px`;
+    sliderNextBtn.style.width = `${
+      (window.innerWidth * 0.15) / slidesToShow
+    }px`;
 
     setVisibleCards(initialIndex, initialIndex + slidesToShow);
   }
   setSize();
   window.addEventListener("resize", setSize);
 
-  nextButton.onclick = () => {
+  sliderNextBtn.onclick = () => {
     if (!isTouching) {
       currentIndex += slidesToShow;
       if (currentIndex >= slidesArray.length) {
@@ -162,7 +169,7 @@ function initializeSlider({
     }
   };
 
-  prevButton.onclick = () => {
+  sliderPrevBtn.onclick = () => {
     if (!isTouching) {
       currentIndex -= slidesToShow;
       if (currentIndex < 0) {
@@ -188,9 +195,9 @@ function initializeSlider({
       const minSwipeDistance = 50;
 
       if (swipeDistance > minSwipeDistance) {
-        prevButton.onclick();
+        sliderPrevBtn.onclick();
       } else if (swipeDistance < -minSwipeDistance) {
-        nextButton.onclick();
+        sliderNextBtn.onclick();
       }
 
       startX = 0;
