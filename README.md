@@ -18,10 +18,6 @@ Install via npm:
 
 ```bash
 npm install animate-slider
-npm install webpack webpack-cli css-loader style-loader --save-dev
-npm run build
-
-
 
 import { initializeSlider } from 'animate-slider';
 import 'animate-slider/src/slider.css';
