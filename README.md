@@ -55,3 +55,6 @@ initializeSlider({
 </body>
 ```
 
+## Demo
+
+(<https://luayabbas1981.github.io/virtual-slider/>)
