@@ -55,6 +55,10 @@ initializeSlider({
 </body>
 ```
 
-## Demo
+## Library demo
 
-[Demo link...](<https://luayabbas1981.github.io/virtual-slider/>)
+[Library demo link...](<https://luayabbas1981.github.io/virtual-slider/>)
+
+## Other links
+
+[Portfolio link...](<https://luayabbas1981.github.io/portfolio-last/>)
