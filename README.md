@@ -43,6 +43,9 @@ initializeSlider({
 - **dots**: Show navigation dots (`true` or `false`).
 - **dotColor**: Color of the navigation dots "HEX Color".
 
+## Dependencies
+This version of animate-slider has no external dependencies, making it lightweight and easy to use. No additional packages are required to run the slider.
+
 ## HTML
 
 ```bash
