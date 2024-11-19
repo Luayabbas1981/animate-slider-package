@@ -10,7 +10,7 @@ A customizable animation slider component for web projects.
 
 - Smooth Performance: Because it doesn't use heavy animations or require a continuous slide, it will likely perform well on all devices, including mobile, without complex calculations or frequent re-renders.
 
-- Unique Presentation: The animation options (spin, flip, scale) add a lively, modern look that can make your component stand out.
+- Unique Presentation: The animation options (rotateX, rotateY, scale, fade) add a lively, modern look that can make your component stand out.
 
 ## Installation
 
@@ -30,7 +30,7 @@ initializeSlider({
   duration: 1, // Duration in seconds
   timingFunction: 'ease-in-out', // Options:  'linear','ease', 'ease-in', 'ease-out', 'ease-in-out'
   dots: true,
-  dotColor: '#ff0000' // Customize dot color HEX color
+  dotColor: '#ff0000' // Customize dot color HEX color 6 digit
 });
 ```
 
@@ -41,7 +41,7 @@ initializeSlider({
 - **duration**: Duration of the animation in seconds.
 - **timingFunction**: Timing function for animation (`linear`,`ease`, `ease-in`, `ease-out`, `ease-in-out`).
 - **dots**: Show navigation dots (`true` or `false`).
-- **dotColor**: Color of the navigation dots "HEX Color".
+- **dotColor**: Color of the navigation dots "HEX Color 6 digit".
 
 ## Dependencies
 This version of animate-slider has no external dependencies, making it lightweight and easy to use. No additional packages are required to run the slider.

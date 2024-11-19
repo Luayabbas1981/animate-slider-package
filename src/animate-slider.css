@@ -54,11 +54,11 @@
   background-color: var(--dot-color);
 }
 .animate-slider-container .active-dot {
-  background-color: var(--active);
+  background-color: var(--active-dot);
 }
 /* Animation & Keyframes */
-
 /* Scale animation */
+
 .scale-out-animate {
   animation: scale-out-animate var(--duration) var(--timing-function) forwards;
 }

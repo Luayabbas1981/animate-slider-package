@@ -85,14 +85,14 @@ function initializeSlider({
   sliderContainer.style.setProperty("--duration", `${duration}s`);
   sliderContainer.style.setProperty("--timing-function", timingFunction);
   sliderContainer.style.setProperty("--dot-color", `${dotColor}5e`);
-  sliderContainer.style.setProperty("--active", dotColor);
+  sliderContainer.style.setProperty("--active-dot", dotColor);
 
   function setCardsNumber() {
-    if (isXLargeScreen && slidesArray.length >= 4) {
+    if (isXLargeScreen) {
       slidesToShow = 5;
-    } else if (isLargeScreen && slidesArray.length >= 3) {
+    } else if (isLargeScreen) {
       slidesToShow = 4;
-    } else if (isMediumScreen && slidesArray.length >= 2) {
+    } else if (isMediumScreen) {
       slidesToShow = 3;
     } else if (isSmallScreen) {
       slidesToShow = 2;
