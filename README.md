@@ -22,7 +22,7 @@ npm install animate-slider
 
 ```bash
 import { initializeSlider } from 'animate-slider';
-import 'animate-slider/src/slider.css';
+import 'animate-slider/src/animate-slider.css';
 
 initializeSlider({
   sliderContainerClass: 'your-slider-container-class',

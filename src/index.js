@@ -12,7 +12,6 @@ const timingFunctionArray = [
   "ease-in-out",
 ];
 
-let isXLargeScreen = null;
 let isLargeScreen = null;
 let isMediumScreen = null;
 let isSmallScreen = null;
@@ -23,7 +22,6 @@ let animationMode = "fade";
 let timingFunctionMode = "ease-in-out";
 let dotsMode = true;
 let dotsArray = [];
-let dotsColor = "#03a9f4";
 let durationTime = 1;
 let initialIndex = 0;
 let currentIndex = 0;
@@ -78,9 +76,6 @@ function initializeSlider({
   if (!dots) {
     dotsMode = false;
   }
-  if (!dotColor) {
-    dotColor = dotsColor;
-  }
 
   sliderContainer.style.setProperty("--duration", `${duration}s`);
   sliderContainer.style.setProperty("--timing-function", timingFunction);
@@ -88,9 +83,7 @@ function initializeSlider({
   sliderContainer.style.setProperty("--active-dot", dotColor);
 
   function setCardsNumber() {
-    if (isXLargeScreen) {
-      slidesToShow = 5;
-    } else if (isLargeScreen) {
+    if (isLargeScreen) {
       slidesToShow = 4;
     } else if (isMediumScreen) {
       slidesToShow = 3;
@@ -140,22 +133,19 @@ function initializeSlider({
   }
 
   function setSize() {
-    isXLargeScreen = window.innerWidth >= 1800;
     isLargeScreen = window.innerWidth >= 1600;
     isMediumScreen = window.innerWidth >= 1100 && window.innerWidth < 1600;
     isSmallScreen = window.innerWidth >= 700 && window.innerWidth < 1100;
     isXSmallScreen = window.innerWidth < 700;
     setCardsNumber();
-    sliderPrevBtn.style.width = `${
-      (window.innerWidth * 0.15) / slidesToShow
-    }px`;
-    sliderNextBtn.style.width = `${
-      (window.innerWidth * 0.15) / slidesToShow
-    }px`;
-
+    sliderPrevBtn.style.width = `${(window.innerWidth * 0.1) / slidesToShow}px`;
+    sliderNextBtn.style.width = `${(window.innerWidth * 0.1) / slidesToShow}px`;
     setVisibleCards(initialIndex, initialIndex + slidesToShow);
   }
   setSize();
+
+  // Slider events
+
   window.addEventListener("resize", setSize);
 
   sliderNextBtn.onclick = () => {
@@ -193,13 +183,11 @@ function initializeSlider({
     if (endX !== 0) {
       const swipeDistance = endX - startX;
       const minSwipeDistance = 50;
-
       if (swipeDistance > minSwipeDistance) {
         sliderPrevBtn.onclick();
       } else if (swipeDistance < -minSwipeDistance) {
         sliderNextBtn.onclick();
       }
-
       startX = 0;
       endX = 0;
     }
