@@ -1,26 +1,38 @@
 # animate-slider
 
-A customizable animation slider component for web projects.
+A lightweight, customizable animation slider component for modern web projects.
 
 ## Description
 
 `animate-slider` allows you to create responsive sliders with customizable animations, navigation options, and touch support. It offers flexible configuration for animations, transition timings, and more.
 
-## Features
+## Key Features
 
-- Smooth Performance: Because it doesn't use heavy animations or require a continuous slide, it will likely perform well on all devices, including mobile, without complex calculations or frequent re-renders.
+- Lightweight and Efficient: Designed with performance in mind, it ensures smooth animations and transitions without overloading   devices.
+- Flexible Configuration: Supports adjustable animation duration, timing functions, and navigation styles.
+- Touch and Responsive Support: Optimized for touch gestures and adaptable to all screen sizes.
+- Dependency-Free: No external dependencies, keeping your project lean and efficient.
+- Custom and Various Animations:
+animate-slider offers a rich set of built-in animations, allowing you to create sliders that stand out. You can also customize the animations to match your design requirements.
+Built-in Animations:
 
-- Unique Presentation: The animation options (rotateX, rotateY, scale, fade) add a lively, modern look that can make your component stand out.
+1.Rotate: Slides rotate along the X or Y axis for a dynamic 3D effect.
+2.Scale: Slides zoom in or out during transitions.
+3.Fade: A smooth opacity transition between slides.
+4.Mirror: Creates a reflection-like effect for transitioning slides.
+5.Pop-up: Slides appear to pop into view with a scaling effect.
 
 ## Installation
 
-Install via npm:
+Installation:
 
 ```bash
 npm install animate-slider
+```
+or
+```bash
 yarn add animate-slider
 ```
-
 ```bash
 import { initializeSlider } from 'animate-slider';
 import 'animate-slider/src/animate-slider.css';
@@ -39,7 +51,7 @@ initializeSlider({
 
 - **sliderContainerClass**: The CSS class of the container element.
 - **animation**: The animation type (`rotate`, `scale`, `fade`, `mirror`, `pop-up`).
-- **duration**: Duration of the animation in seconds.
+- **duration**: Duration of the animation in seconds (0) for no animation.
 - **timingFunction**: Timing function for animation (`linear`,`ease`, `ease-in`, `ease-out`, `ease-in-out`).
 - **dots**: Show navigation dots (`true` or `false`).
 - **dotColor**: Color of the navigation dots "HEX Color 6 digit".

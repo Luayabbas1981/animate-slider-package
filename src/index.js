@@ -20,25 +20,12 @@ let visibleSlides = null;
 let slidesToShow = null;
 let animationMode = "fade";
 let timingFunctionMode = "ease-in-out";
-let dotsMode = true;
 let dotsArray = [];
-let durationTime = 1;
 let initialIndex = 0;
 let currentIndex = 0;
 let startX = 0;
 let endX = 0;
 let isTouching = false;
-
-const sliderPrevBtn = document.createElement("button");
-sliderPrevBtn.className = "slider-prev-btn";
-sliderPrevBtn.style.backgroundImage = `url(${prevBtnImg})`;
-
-const sliderNextBtn = document.createElement("button");
-sliderNextBtn.className = "slider-next-btn";
-sliderNextBtn.style.backgroundImage = `url(${nextBtnImg})`;
-
-const dotsContainer = document.createElement("div");
-dotsContainer.classList.add("dots-container");
 
 function initializeSlider({
   sliderContainerClass,
@@ -59,7 +46,6 @@ function initializeSlider({
   const slidesArray = Array.from(sliderContainer.children).filter(
     (child) => child.tagName === "DIV"
   );
-
   if (!animationArray.includes(animation)) {
     animation = animationMode;
   } else {
@@ -70,19 +56,27 @@ function initializeSlider({
   } else {
     timingFunctionMode = timingFunction;
   }
-  if (!duration) {
-    duration = durationTime;
-  }
-  if (!dots) {
-    dotsMode = false;
-  }
 
-  sliderContainer.style.setProperty("--duration", `${duration}s`);
-  sliderContainer.style.setProperty("--timing-function", timingFunction);
+  // Slider elements
+  const animateSlider = document.createElement("div");
+  animateSlider.classList.add("animate-slider");
+  const sliderPrevBtn = document.createElement("button");
+  sliderPrevBtn.className = "slider-prev-btn";
+  sliderPrevBtn.style.backgroundImage = `url(${prevBtnImg})`;
+
+  const sliderNextBtn = document.createElement("button");
+  sliderNextBtn.className = "slider-next-btn";
+  sliderNextBtn.style.backgroundImage = `url(${nextBtnImg})`;
+
+  const dotsContainer = document.createElement("div");
+  dotsContainer.classList.add("dots-container");
+
+  animateSlider.style.setProperty("--duration", `${duration}s`);
+  animateSlider.style.setProperty("--timing-function", timingFunction);
   sliderContainer.style.setProperty("--dot-color", `${dotColor}5e`);
   sliderContainer.style.setProperty("--active-dot", dotColor);
 
-  function setCardsNumber() {
+  function setSlidesNumber() {
     if (isLargeScreen) {
       slidesToShow = 4;
     } else if (isMediumScreen) {
@@ -96,7 +90,7 @@ function initializeSlider({
   }
 
   function setDots() {
-    if (dotsMode) {
+    if (dots) {
       dotsContainer.innerHTML = "";
       dotsArray = [];
       const dotsNumber = Math.ceil(slidesArray.length / slidesToShow);
@@ -120,55 +114,55 @@ function initializeSlider({
     });
   }
 
-  function setVisibleCards(startIndex, lastIndex) {
+  function setVisibleSlides(startIndex, lastIndex) {
     sliderContainer.innerHTML = "";
-    sliderContainer.appendChild(sliderPrevBtn);
+    animateSlider.innerHTML = "";
+    sliderContainer.appendChild(animateSlider);
+    sliderPrevBtn.style.width = `${
+      (sliderContainer.clientWidth * 0.15) / slidesToShow
+    }px`;
+    sliderNextBtn.style.width = `${
+      (sliderContainer.clientWidth * 0.15) / slidesToShow
+    }px`;
     visibleSlides = slidesArray.slice(startIndex, lastIndex);
     visibleSlides.forEach((slide) => {
-      sliderContainer.appendChild(slide);
+      animateSlider.appendChild(slide);
       slide.classList.add(`${animation}-out-animate`);
     });
+    sliderContainer.appendChild(sliderPrevBtn);
     sliderContainer.appendChild(sliderNextBtn);
     setDots();
   }
 
   function setSize() {
-    isLargeScreen = window.innerWidth >= 1600;
-    isMediumScreen = window.innerWidth >= 1100 && window.innerWidth < 1600;
-    isSmallScreen = window.innerWidth >= 700 && window.innerWidth < 1100;
-    isXSmallScreen = window.innerWidth < 700;
-    setCardsNumber();
-    sliderPrevBtn.style.width = `${(window.innerWidth * 0.1) / slidesToShow}px`;
-    sliderNextBtn.style.width = `${(window.innerWidth * 0.1) / slidesToShow}px`;
-    setVisibleCards(initialIndex, initialIndex + slidesToShow);
+    isLargeScreen = window.innerWidth >= 1280;
+    isMediumScreen = window.innerWidth >= 1024 && window.innerWidth < 1280;
+    isSmallScreen = window.innerWidth >= 768 && window.innerWidth < 1024;
+    isXSmallScreen = window.innerWidth < 768;
+    setSlidesNumber();
+    setVisibleSlides(initialIndex, initialIndex + slidesToShow);
   }
   setSize();
 
-  // Slider events
-
-  window.addEventListener("resize", setSize);
-
-  sliderNextBtn.onclick = () => {
+  function handleSlideChange(direction) {
     if (!isTouching) {
-      currentIndex += slidesToShow;
+      currentIndex += direction * slidesToShow;
       if (currentIndex >= slidesArray.length) {
         currentIndex = 0;
+      } else if (currentIndex < 0) {
+        currentIndex =
+          slidesArray.length -
+          (slidesArray.length % slidesToShow || slidesToShow);
       }
-      setVisibleCards(currentIndex, currentIndex + slidesToShow);
+      setVisibleSlides(currentIndex, currentIndex + slidesToShow);
       updateActiveDot();
     }
-  };
+  }
 
-  sliderPrevBtn.onclick = () => {
-    if (!isTouching) {
-      currentIndex -= slidesToShow;
-      if (currentIndex < 0) {
-        currentIndex = slidesArray.length - slidesToShow;
-      }
-      setVisibleCards(currentIndex, currentIndex + slidesToShow);
-      updateActiveDot();
-    }
-  };
+  // Slider events
+  window.addEventListener("resize", setSize);
+  sliderNextBtn.addEventListener("click", () => handleSlideChange(1));
+  sliderPrevBtn.addEventListener("click", () => handleSlideChange(-1));
 
   sliderContainer.addEventListener("touchstart", (e) => {
     isTouching = true;
@@ -183,6 +177,7 @@ function initializeSlider({
     if (endX !== 0) {
       const swipeDistance = endX - startX;
       const minSwipeDistance = 50;
+
       if (swipeDistance > minSwipeDistance) {
         sliderPrevBtn.onclick();
       } else if (swipeDistance < -minSwipeDistance) {
@@ -194,5 +189,4 @@ function initializeSlider({
     isTouching = false;
   });
 }
-
 export { initializeSlider };
