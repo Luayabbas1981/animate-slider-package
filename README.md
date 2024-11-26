@@ -18,6 +18,7 @@ Install via npm:
 
 ```bash
 npm install animate-slider
+yarn add animate-slider
 ```
 
 ```bash
