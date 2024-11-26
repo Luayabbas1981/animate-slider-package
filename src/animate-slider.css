@@ -1,5 +1,4 @@
 .animate-slider-container {
-  height: 60vh;
   margin: auto;
   position: relative;
 }
@@ -128,7 +127,7 @@
 
 @keyframes pop-up-out-animate {
   from {
-    scale: 0;
+    scale: 0.3;
   }
   to {
     scale: 1;
