@@ -1,10 +1,10 @@
 .animate-slider-container {
-  margin: auto;
   position: relative;
 }
 .animate-slider-container .animate-slider {
-  width: 100%;
+  width: calc(100% - var(--btn-width) * 2);
   height: 90%;
+  padding: 0 10%;
   display: flex;
   justify-content: center;
   align-items: center;

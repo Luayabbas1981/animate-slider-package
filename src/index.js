@@ -117,20 +117,19 @@ function initializeSlider({
   function setVisibleSlides(startIndex, lastIndex) {
     sliderContainer.innerHTML = "";
     animateSlider.innerHTML = "";
-    sliderContainer.appendChild(animateSlider);
-    sliderPrevBtn.style.width = `${
-      (sliderContainer.clientWidth * 0.15) / slidesToShow
-    }px`;
-    sliderNextBtn.style.width = `${
-      (sliderContainer.clientWidth * 0.15) / slidesToShow
-    }px`;
     visibleSlides = slidesArray.slice(startIndex, lastIndex);
     visibleSlides.forEach((slide) => {
       animateSlider.appendChild(slide);
       slide.classList.add(`${animation}-out-animate`);
     });
+    let sliderBtnWidth = (sliderContainer.clientWidth * 0.1) / slidesToShow;
+    isXSmallScreen
+      ? (sliderBtnWidth = sliderBtnWidth + "px")
+      : (sliderBtnWidth = sliderBtnWidth * 1.5 + "px");
+    sliderNextBtn.style.width = sliderBtnWidth;
     sliderContainer.appendChild(sliderPrevBtn);
     sliderContainer.appendChild(sliderNextBtn);
+    sliderContainer.style.setProperty("--btn-width", sliderBtnWidth);
     setDots();
   }
 
