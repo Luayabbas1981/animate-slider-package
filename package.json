@@ -1,25 +1,28 @@
 {
   "name": "animate-slider",
-  "version": "1.1.3",
+  "version": "1.3.3",
   "description": "A customizable animation slider component",
-  "main": "dist/bundle.js",
-  "scripts": {
-    "build": "webpack --mode production",
-    "start": "webpack --watch"
-  },
-  "keywords": [
-    "slider",
-    "animation",
-    "carousel",
-    "JavaScript"
-  ],
-  "author": "luay_abbas",
-  "license": "ISC",
+  "main": "src/index.js",
+  "style": "src/animate-slider.css",
   "files": [
     "dist",
     "src",
     "README.md",
     "LICENSE"
   ],
-  "dependencies": {}
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "slider",
+    "animation",
+    "carousel"
+  ],
+  "author": "luay abbas",
+  "license": "MIT",
+  "homepage": "https://luayabbas1981.github.io/virtual-slider/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Luayabbas1981/animate-slider-package"
+  }
 }
