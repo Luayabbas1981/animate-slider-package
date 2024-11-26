@@ -122,10 +122,12 @@ function initializeSlider({
       animateSlider.appendChild(slide);
       slide.classList.add(`${animation}-out-animate`);
     });
+    sliderContainer.appendChild(animateSlider);
     let sliderBtnWidth = (sliderContainer.clientWidth * 0.1) / slidesToShow;
     isXSmallScreen
       ? (sliderBtnWidth = sliderBtnWidth + "px")
-      : (sliderBtnWidth = sliderBtnWidth * 1.5 + "px");
+      : (sliderBtnWidth = sliderBtnWidth * 1.3 + "px");
+    sliderPrevBtn.style.width = sliderBtnWidth;
     sliderNextBtn.style.width = sliderBtnWidth;
     sliderContainer.appendChild(sliderPrevBtn);
     sliderContainer.appendChild(sliderNextBtn);
@@ -134,10 +136,12 @@ function initializeSlider({
   }
 
   function setSize() {
-    isLargeScreen = window.innerWidth >= 1280;
-    isMediumScreen = window.innerWidth >= 1024 && window.innerWidth < 1280;
-    isSmallScreen = window.innerWidth >= 768 && window.innerWidth < 1024;
-    isXSmallScreen = window.innerWidth < 768;
+    isLargeScreen = sliderContainer.clientWidth >= 1280;
+    isMediumScreen =
+      sliderContainer.clientWidth >= 1024 && sliderContainer.clientWidth < 1280;
+    isSmallScreen =
+      sliderContainer.clientWidth >= 768 && sliderContainer.clientWidth < 1024;
+    isXSmallScreen = sliderContainer.clientWidth < 768;
     setSlidesNumber();
     setVisibleSlides(initialIndex, initialIndex + slidesToShow);
   }
@@ -189,3 +193,4 @@ function initializeSlider({
   });
 }
 export { initializeSlider };
+k
