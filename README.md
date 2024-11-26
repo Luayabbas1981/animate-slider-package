@@ -8,19 +8,19 @@ A lightweight, customizable animation slider component for modern web projects.
 
 ## Key Features
 
-- Lightweight and Efficient: Designed with performance in mind, it ensures smooth animations and transitions without overloading   devices.
+- Lightweight and Efficient: Designed with performance in mind, it ensures smooth animations and transitions without overloading devices.
 - Flexible Configuration: Supports adjustable animation duration, timing functions, and navigation styles.
 - Touch and Responsive Support: Optimized for touch gestures and adaptable to all screen sizes.
 - Dependency-Free: No external dependencies, keeping your project lean and efficient.
 - Custom and Various Animations:
-animate-slider offers a rich set of built-in animations, allowing you to create sliders that stand out. You can also customize the animations to match your design requirements.
-Built-in Animations:
+  animate-slider offers a rich set of built-in animations, allowing you to create sliders that stand out. You can also customize the animations to match your design requirements.
+  Built-in Animations:
 
-1.Rotate: Slides rotate along the X or Y axis for a dynamic 3D effect.
-2.Scale: Slides zoom in or out during transitions.
-3.Fade: A smooth opacity transition between slides.
-4.Mirror: Creates a reflection-like effect for transitioning slides.
-5.Pop-up: Slides appear to pop into view with a scaling effect.
+  1.Rotate: Slides rotate along the X or Y axis for a dynamic 3D effect.
+  2.Scale: Slides zoom in or out during transitions.
+  3.Fade: A smooth opacity transition between slides.
+  4.Mirror: Creates a reflection-like effect for transitioning slides.
+  5.Pop-up: Slides appear to pop into view with a scaling effect.
 
 ## Installation
 
@@ -29,10 +29,13 @@ Installation:
 ```bash
 npm install animate-slider
 ```
+
 or
+
 ```bash
 yarn add animate-slider
 ```
+
 ```bash
 import { initializeSlider } from 'animate-slider';
 import 'animate-slider/src/animate-slider.css';
@@ -57,6 +60,7 @@ initializeSlider({
 - **dotColor**: Color of the navigation dots "HEX Color 6 digit".
 
 ## Dependencies
+
 This version of animate-slider has no external dependencies, making it lightweight and easy to use. No additional packages are required to run the slider.
 
 ## HTML
@@ -73,8 +77,8 @@ This version of animate-slider has no external dependencies, making it lightweig
 
 ## Library demo
 
-[Library demo link...](<https://luayabbas1981.github.io/virtual-slider/>)
+[Library demo link...](https://luayabbas1981.github.io/virtual-slider/)
 
 ## Other links
 
-[Portfolio link...](<https://luayabbas1981.github.io/portfolio-last/>)
+[Portfolio link...](https://luayabbas1981.github.io/portfolio-last/)
