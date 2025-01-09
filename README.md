@@ -45,6 +45,10 @@ initializeSlider({
   animation: 'rotate', // Options: 'rotate', 'scale', 'fade', 'mirror', 'pop-up'
   duration: 1, // Duration in seconds
   timingFunction: 'ease-in-out', // Options:  'linear','ease', 'ease-in', 'ease-out', 'ease-in-out'
+   cardsToShowLargeScreen: 4, // Number of cards visible on large screens (≥1280px) 
+  cardsToShowMediumScreen: 3, // Number of cards visible on medium screens (1024px–1279px) 
+  cardsToShowSmallScreen: 2, // Number of cards visible on small screens (768px–1023px) 
+  cardsToShowXSmallScreen: 2, // Number of cards visible on xsmall screens (<768px) 
   dots: true,
   dotColor: '#ff0000' // Customize dot color HEX color 6 digit
 });
@@ -56,6 +60,10 @@ initializeSlider({
 - **animation**: The animation type (`rotate`, `scale`, `fade`, `mirror`, `pop-up`).
 - **duration**: Duration of the animation in seconds (0) for no animation.
 - **timingFunction**: Timing function for animation (`linear`,`ease`, `ease-in`, `ease-out`, `ease-in-out`).
+- **cardsToShowLargeScreen**: Number of cards visible on large screens (≥1280px).
+- **cardsToShowMediumScreen**: Number of cards visible on medium screens (1024px–1279px). 
+- **cardsToShowSmallScreen**: Number of cards visible on small screens (768px–1023px). 
+- **cardsToShowXSmallScreen**: Number of cards visible on xsmall screens (<768px) 
 - **dots**: Show navigation dots (`true` or `false`).
 - **dotColor**: Color of the navigation dots "HEX Color 6 digit".
 
