@@ -29,6 +29,10 @@ let isTouching = false;
 
 function initializeSlider({
   sliderContainerClass,
+  cardsToShowLargeScreen,
+  cardsToShowMediumScreen,
+  cardsToShowSmallScreen,
+  cardsToShowXSmallScreen,
   animation,
   duration,
   timingFunction,
@@ -78,13 +82,13 @@ function initializeSlider({
 
   function setSlidesNumber() {
     if (isLargeScreen) {
-      slidesToShow = 4;
+      slidesToShow = cardsToShowLargeScreen || 4;
     } else if (isMediumScreen) {
-      slidesToShow = 3;
+      slidesToShow = cardsToShowMediumScreen || 3;
     } else if (isSmallScreen) {
-      slidesToShow = 2;
+      slidesToShow = cardsToShowSmallScreen || 2;
     } else if (isXSmallScreen) {
-      slidesToShow = 1;
+      slidesToShow = cardsToShowXSmallScreen || 1;
     }
     sliderContainer.style.setProperty("--slides", slidesToShow);
   }
